@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03-递归-阶乘的练习</title>
+</head>
+<body>
+</body>
+<script>
+	// 求 n 的阶乘, 使用循环求解
+	function foo1 ( n ) {   // 写一个函数, 传入一个数字 n, 即 求 n 的阶乘. 将求得的结果返回
+		var res = 1, i = 1;
+		for ( ; i <= n; i++ ) {
+			res *= i;
+		}
+		return res;
+	} 
+
+
+	// 从 1 到 10 看阶乘计算的结果
+	// var i = 1;
+	// for ( ; i < 11; i++ ) {
+	// 	console.log( i + '! = ' + foo1( i ) );
+	// }
+
+
+
+	// 利用递归的方式进行思考
+	// 阶乘, 0 没有阶乘, 1 的阶乘 1, 2 的 阶乘就是 1 * 2, ... 
+	// 求 n 的阶乘, 转换成已解决的问题就是 假设 n 的阶乘求解已经完成
+	// foo2 就是函数
+	// 求 n 的阶乘就是计算 foo2 ( n )
+	// n 的 阶乘就是 n * n-1 的阶乘
+	// 得到 foo2 ( n ) 就等于 n * foo2 ( n - 1 )
+	// 所以
+	// function foo2 ( n ) {
+
+	// 	return n * foo2 ( n - 1 );
+	// } 
+
+	// 临界条件的找法就是看什么情况下有结果
+	function foo2 ( n ) {
+		// 当 调用 foo2 ( 1 ) 的 时候不再 继续递归, 而是返回 1
+		if ( n == 1 ) return 1;
+
+		return n * foo2 ( n - 1 );
+	} 	
+	// 这个递归就求完了.
+	// 需要注意. 不要去深究递归的执行步骤. 问题是搞清楚如何将一个问题转换成已解决的问题
+	// 如何找出临界条件, 写出递归函数.
+
+	
+	var i = 1
+	for ( ; i < 11; i++ ) {
+		console.log( i + '! = ' + foo1( i ) + '\t' + foo2( i ) );
+	}
+
+	// 求 power 函数
+	// 例如 power ( 2, 3 ) 代表 2 的 3 次方
+</script>
+</html>

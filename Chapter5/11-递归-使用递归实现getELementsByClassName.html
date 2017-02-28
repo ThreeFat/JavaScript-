@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11-递归-使用递归实现getELementsByClassName</title>
+</head>
+<body>
+	<div>1
+		<div class="dv">8</div>
+	</div>
+	<div class="dv">2
+		<div class="dv">5</div>	
+		<div class="dv">6</div>	
+		<div class="dv">7</div>	
+	</div>
+	<div>3</div>
+	<div class="dv">4</div>
+	<div>5</div>
+</body>
+<script>
+	// 获得 className 的所有元素的时候, 有两种用法
+	// document.getElementsByClassName		获得页面中所有的
+	// <node>.getElementsByClassName 		获得 <node> 标签下的所有的
+
+
+	function getByClass ( className, node ) {
+
+		node = node || document;
+
+		// 判断子元素是否是含有 指定 className 的
+		var list = [], subNode, tempNodes,
+			i = 0, j, len = node.childNodes.length;
+
+		for ( ; i < len; i++ ) {
+			// 判断每一个子元素是否含有指定的 className 属性
+			subNode = node.childNodes[ i ];
+			if ( subNode.className == className ) {
+				// 表示找到了该元素
+				list.push( subNode );
+			}
+
+			// 如果当前元素是 可以包含子元素的 标签, 那么就使用递归
+			if ( subNode.nodeType === 1 ) {
+				// 递归
+				tempNodes = getByClass( className, subNode );
+				// 将数组, 加到当前的 list 中
+				for ( j = 0; j < tempNodes.length; j++ ) {
+					list.push( tempNodes[ j ] );
+				}
+			}
+		}
+		return list;
+	}
+
+
+	var list = getByClass( 'dv', document.body );
+
+
+	console.log( list.length );
+</script>
+</html>

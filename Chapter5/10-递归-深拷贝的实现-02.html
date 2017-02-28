@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10-递归-深拷贝的实现-02</title>
+</head>
+<body>
+</body>
+<script>
+	// 如果 一个属性 恰好是 引用类型( typeof ) 那么就需要对其属性做拷贝
+	// clone 就是 递归函数, 对属性进行 clone 就是递归
+
+	function deepClone ( obj ) {
+		var dst = obj instanceof Array ? [] : {}, k;
+		for ( k in obj ) {
+			// 如果是值类型, 直接赋值, 如果是引用类型, 拷贝以后再赋值
+			if ( typeof obj[ k ] === 'object' ) {
+				dst[ k ] = deepClone( obj[ k ] );
+			} else {
+				dst[ k ] = obj[ k ];
+			}
+		}
+		return dst;
+	}
+
+	var o1 = [ { name: '张三', scores: [ 100, 95, 80 ] } ];
+	var o2 = deepClone( o1 );
+	// 拷贝没有问题
+	console.log( 'o1[ 0 ].name = ' + o1[ 0 ].name + ', o1[ 0 ].scores: [' + o1[ 0 ].scores + ']' );
+	console.log( 'o2[ 0 ].name = ' + o2[ 0 ].name + ', o2[ 0 ].scores: [' + o2[ 0 ].scores + ']' );
+	// console.log( 'o2[ 0 ].name = ' + o2[ 0 ].name + ', o2[ 0 ].scores: [' + 
+	// 		o2[ 0 ].scores[ 0 ] + ', ' + 
+	// 		o2[ 0 ].scores[ 1 ] + ', ' + 
+	// 		o2[ 0 ].scores[ 2 ] + 
+	// 		']' );
+
+
+	o1[ 0 ].name = '李四';
+	o1[ 0 ].scores[ 0 ] = 60;
+	o1[ 0 ].scores[ 1 ] = 61;
+	o1[ 0 ].scores[ 2 ] = 62;
+	
+
+	console.log( 'o1[ 0 ].name = ' + o1[ 0 ].name + ', o1[ 0 ].scores: [' + o1[ 0 ].scores + ']' );
+	console.log( 'o2[ 0 ].name = ' + o2[ 0 ].name + ', o2[ 0 ].scores: [' + o2[ 0 ].scores + ']' );
+	// console.log( 'o2[ 0 ].name = ' + o2[ 0 ].name + ', o2[ 0 ].scores: [' + 
+	// 		o2[ 0 ].scores[ 0 ] + ', ' + 
+	// 		o2[ 0 ].scores[ 1 ] + ', ' + 
+	// 		o2[ 0 ].scores[ 2 ] + 
+	// 		']' );
+
+</script>
+</html>

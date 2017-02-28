@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>15-闭包的引用-简化递归-实现代码</title>
+</head>
+<body>
+</body>
+<script>
+	// fibonacci 数列
+	var count1 = 0;
+	function fib1 ( n ) {
+
+		count1++;
+
+		if ( n == 1 || n == 0 ) return 1;
+		return fib1( n - 1 ) + fib1( n - 2 );
+	}
+
+
+	var count2 = 0;
+	var data = [ 1, 1 ];
+	// 计算核心, 先从数组中取数据, 如果数组中没有该数据, 再 递归计算
+	// 如果数组中有, 就直接拿来用
+	function fib2 ( n ) {
+
+		count2++;
+
+		var v = data[ n ];
+		if ( v ) {
+			// 存在
+			return v;
+		} else {
+			// 不存在, 需要递归计算
+			v = fib2( n - 1 ) + fib2( n - 2 );
+			// 计算出的结果需要加到数组中
+			data[ n ] = v;
+			return v;
+		}
+	}
+
+	// for ( var i = 0; i < 10; i++ ) {
+	// 	console.log( 'fib1( ' + i + ' ) = ' + fib1( i ) + ', fib2( ' + i + ' ) = ' + fib2( i ) );
+	// }
+
+	// 单个计算的性能问题
+	// console.log( 'fib2( 1 ) = ' + fib2( 1 ) + ", count2 = " + count2 );
+	// console.log( 'fib2( 3 ) = ' + fib2( 3 ) + ", count2 = " + count2 );		// 5
+	// console.log( 'fib2( 4 ) = ' + fib2( 4 ) + ", count2 = " + count2 );		// 9 : 7
+	// console.log( 'fib2( 5 ) = ' + fib2( 5 ) + ", count2 = " + count2 );		// 15 : 9
+
+	// ...
+	// console.log( 'fib2( 10 ) = ' + fib2( 10 ) + ", count2 = " + count2 );	// 177 : 19
+	// console.log( 'fib2( 11 ) = ' + fib2( 11 ) + ", count2 = " + count2 );	// 287 : 21
+
+	// ..
+	// console.log( 'fib2( 20 ) = ' + fib2( 20 ) + ", count2 = " + count2 );	// 21891 : 39
+	// console.log( 'fib2( 21 ) = ' + fib2( 21 ) + ", count2 = " + count2 );	// 35421 : 41
+
+
+	// 多个计算的性能问题
+	// for ( var i = 0; i < 21; i++ ) {
+	// 	console.log( fib2( i ) );
+	// }
+	// console.log( count2 );   
+	// fib1   10: 276, 11: 453, 20: 35400, 21: 57291
+	// fib2   10: 26,  11: 29,  20: 56,    21: 59
+
+
+
+
+	// 使用闭包保护数据
+	var fib2 = (function () {
+		var data = [ 1, 1 ];
+		return function ( n ) {
+			var v = data[ n ];
+			if ( v ) {
+				return v;
+			} else {
+				v = arguments.callee( n - 1 ) + 
+					arguments.callee( n - 2 );
+				data[ n ] = v;
+				return v;
+			}
+		};
+	})()
+	
+	// for ( var i = 0; i < 10; i++ ) {
+	// 	console.log( 'fib1( ' + i + ' ) = ' + fib1( i ) + ', fib2( ' + i + ' ) = ' + fib2( i ) );
+	// }
+	
+</script>
+</html>

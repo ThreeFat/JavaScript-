@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>16-闭包的应用-带有事件移除与追加的对象</title>
+</head>
+<body>
+</body>
+<script>
+	var itcastload = (function () {
+
+		// 私有数据
+		var data = [];
+		// 由于要求系统在调用 load 的时候, 执行这个数组中的所有方法
+		// 因此需要手动实现 onload 的功能
+		window.onload = function () {
+			// 依次执行 数组中的 方法
+			for ( var i = 0; i < data.length; i++ ) {
+				data[ i ]();
+			}
+		};
+
+		return {
+			addEvent: function ( fn ) {
+				data.push( fn );
+			}, removeEvent: function ( fn ) {
+				// 删除 fn
+				// 遍历 data, 发现与 fn 相同的就删除
+
+				// 给定一个数组, 删除里面的元素
+				// arr.splice( 从第几个元素开始, 一共删除多少个元素 )
+				// 删除以后 arr.length 就发生变化了
+				// 倒过来循环
+//				for ( var i = data.length - 1; i >= 0; i-- ) {
+//					if ( data[ i ] === fn ) {
+//						data.splice( i, 1 );
+//					}
+//				}
+				for ( var i = 0; i <data.length; i++ ) {
+					if ( data[ i ] === fn ) {
+						data.splice( i, 1 );
+					}
+				}
+			}
+		};
+		
+	})();
+
+
+	itcastload.addEvent( function () {
+		console.log( '我加载了1' );
+	} );
+
+	
+	function f () {
+		console.log( '我加载了3' );
+	}
+
+	itcastload.addEvent( f );
+	itcastload.addEvent( f );
+	itcastload.addEvent( f );
+
+
+	itcastload.addEvent( function () {
+		console.log( '我加载了2' );
+	} );
+
+
+
+	itcastload.removeEvent( f );
+
+
+	// console.log( {} == {} ); // 真还是假?
+
+
+
+
+
+
+
+</script>
+</html>

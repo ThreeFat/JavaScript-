@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>13-闭包的应用-利用闭包实现私有数据</title>
+</head>
+<body>
+</body>
+<script>
+	
+	// 函数允许返回一个对象, 那么该对象可以提供数据访问方法
+	// 但是数据存储在闭包中, 达到私有的目的
+	function createPerson ( name, age, gender ) {
+		var hasChangeGender = false;
+		console.log(name)
+		return {
+			get_Name: function () {
+				return name;
+			}, set_Name: function ( value ) {
+				name = value;
+			}, get_Age: function () {
+				return age;
+			}, get_Gender: function () {
+				return gender;
+			}, set_Gender: function ( value ) {
+				if ( hasChangeGender == false ) {
+					gender = value;
+					hasChangeGender = true;
+				} else {
+					throw new Error( '已经改变过一次性别了, 不能再修改了' );
+				}
+			}
+		};
+	}
+
+	var p1 = createPerson( '张三', 19, '男' );
+
+	console.log( 'p1.name = ' + p1.get_Name() );
+	console.log( 'p1.age = ' + p1.get_Age() );
+	console.log( 'p1.gender = ' + p1.get_Gender() );
+
+	p1.set_Name( '王二' );
+	p1.set_Gender( '女' );
+
+	console.log( 'p1.name = ' + p1.get_Name() );
+	console.log( 'p1.age = ' + p1.get_Age() );
+	console.log( 'p1.gender = ' + p1.get_Gender() );
+
+	p1.set_Name( '王三' );
+	p1.set_Gender( '男' );
+
+</script>
+</html>	

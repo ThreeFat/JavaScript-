@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09-递归-深拷贝的实现-01</title>
+</head>
+<body>
+</body>
+<script>
+	function clone ( obj ) {
+		// 将 目标对象 拷贝一份
+		var src = {},
+			k;
+		for ( k in obj ) {
+			src[ k ] = obj[ k ];
+		}
+		return src;
+	}
+
+
+	/*
+	var o1 = {
+		name: '张三',
+		age: 19,
+		gender: '男'
+	};
+
+	var o2 = clone( o1 );
+
+	console.log( 'o1.name = ' + o1.name + 
+				 ', o1.age = ' + o1.age +
+				 ', o1.gender = ' + o1.gender );
+	console.log( 'o2.name = ' + o2.name + 
+				 ', o2.age = ' + o2.age +
+				 ', o2.gender = ' + o2.gender );
+
+	// 重新复制 o1
+	o1.name = '李四';
+	o1.age = 20;
+	o1.gender = '女';
+
+	console.log( 'o1.name = ' + o1.name + 
+				 ', o1.age = ' + o1.age +
+				 ', o1.gender = ' + o1.gender );
+	console.log( 'o2.name = ' + o2.name + 
+				 ', o2.age = ' + o2.age +
+				 ', o2.gender = ' + o2.gender );
+	*/
+
+
+	var o1 = [ { name: '张三' } ];
+	var o2 = clone( o1 );
+	// 拷贝没有问题
+	console.log( 'o1[ 0 ].name = ' + o1[ 0 ].name );
+	console.log( 'o2[ 0 ].name = ' + o2[ 0 ].name );
+
+	o1[ 0 ].name = '李四';
+
+	
+	console.log( 'o1[ 0 ].name = ' + o1[ 0 ].name );
+	console.log( 'o2[ 0 ].name = ' + o2[ 0 ].name );
+
+</script>
+</html>	

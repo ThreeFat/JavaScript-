@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12-闭包的应用-获得闭包中多个数据</title>
+</head>
+<body>
+</body>
+<script>
+	function foo () {
+		var num1 = 123, num2 = 456;
+		return {
+			get_num1: function () {
+				return num1;
+			},
+			set_num1: function ( value ) {
+				num1 = value;
+			},
+			get_num2: function () {
+				return num2;
+			}
+		};
+	}
+
+	var o = foo();
+
+	console.log( 'num1 = ' + o.get_num1() );
+	console.log( 'num2 = ' + o.get_num2() );
+
+	o.set_num1( 789 );
+
+	console.log( 'num1 = ' + o.get_num1() );
+	console.log( 'num2 = ' + o.get_num2() );
+ 
+</script>
+</html>

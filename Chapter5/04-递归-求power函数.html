@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04-递归-求power函数</title>
+	<script src="common.js"></script>
+</head>
+<body>
+	
+</body>
+<script>
+	// 求 power 函数
+	// 例如 power ( 2, 3 ) 代表 2 的 3 次方
+
+	// 1> 求转换结果
+	//  假设已经解决, power( n, m ) -> n * power( n, m - 1 ) 
+	//  得到函数
+	// function power( n, m ) {
+
+	// 	return n * power( n, m - 1 );
+	// }
+
+	// 2> 临界条件
+	// 一个是 0 的情况. 一个是 1 的情况
+	// if ( 0 ) => return 1
+	// if ( 1 ) => return n
+
+	function power( n, m ) {
+		if ( m === 0 ) return 1;
+		if ( m === 1 ) return n;
+
+		return n * power( n, m - 1 );
+	}
+
+	// var i = 0;
+	// for ( ; i < 10; i++ ) {
+	// 	console.log( 'power( 3, ' + i + ' ) = ' + power( 3, i ) );
+	// }
+
+	tool2( 'power( 3, i )' );
+
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08-Fibonacci数列</title>
+</head>
+<body>
+</body>
+<script>
+	// 已经知道地推关系就是 每一项都是前两项的 和
+	// function Fib ( n ) {
+	// 	return Fib ( n - 1 ) + Fib ( n - 2 );
+	// }
+	// 第 0 项 与 第 1 项 是临界条件
+
+	function Fib ( n ) {
+		if ( n === 1 || n === 0 ) return 1;
+		return Fib ( n - 1 ) + Fib ( n - 2 );
+	}
+
+	function tool ( foo ) {
+		var i = 0;
+		for ( ; i < 10; i++ ) {
+			console.log( foo ( i ) );
+		}
+	}
+
+
+	function tool2 ( fooStr ) {
+		var i = 0;
+		for ( ; i < 10; i++ ) {
+			console.log( eval(fooStr) );
+		}
+	}
+
+
+	//tool2 ( 'Fib( i )' );
+	Fib(10);
+
+</script>
+</html>

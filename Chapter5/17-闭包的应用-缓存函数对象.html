@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+/*
+	function cache ( key, value ) {
+
+		// 可以在这里加上限定长度的代码
+
+		cache[ key ] = value;
+	}
+
+
+	cache( 'attr', function ( node, attr ) {
+		return node.getAttribute( 'name' ) == attr;
+	} );
+
+	cache( '__name__', '张三' );
+*/
+
+
+
+
+
+
+
+
+	var cache = (function () {
+		var data = [], max = 3;
+		// 去掉 var 的目的是为了使得变量编程全局变量, 可以调试查看 data 中的数据
+		// 开发中不允许省略 var
+
+		function cache ( key, value ) {
+
+			// 做判断, 如果超出范围, 则, 将最开始加入的 移除 
+			// 将数组 第 0 项元素移除的 splice, shift
+			if ( data.length >= 3 ) {
+				// 需要先移除
+				var temp = data.shift();
+				delete cache[ temp ];
+			} 
+
+			data.push( key );
+
+			cache[ key ] = value;
+		}
+		return cache;
+	})();
+
+
+	cache( 'name1', '张三' );
+	cache( 'name2', '李四' );
+	cache( 'name3', '王五' );
+	cache( 'name4', '找钱' );
+
+
+	var v = cache( key );
+	if ( !v ) {
+		// 计算 v
+		v = ....
+		cache( key, v );
+	}
+	// ...
+
+
+
+
+
+
+
+
+
+
+
+
+	function createCache () {
+		var data = [], max = 3;
+		// 去掉 var 的目的是为了使得变量编程全局变量, 可以调试查看 data 中的数据
+		// 开发中不允许省略 var
+
+		function cache ( key, value ) {
+
+			// 做判断, 如果超出范围, 则, 将最开始加入的 移除 
+			// 将数组 第 0 项元素移除的 splice, shift
+			if ( data.length >= 3 ) {
+				// 需要先移除
+				var temp = data.shift();
+				delete cache[ temp ];
+			} 
+
+			data.push( key );
+
+			cache[ key ] = value;
+		}
+		return cache;
+	}
+
+	var kvCache = createCache();
+	
+
+
+</script>
+</html>
