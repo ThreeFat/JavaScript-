@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	function foo () {
+		var num = 123;
+		return num;
+	}
+	*/
+	// 在外界访问到 num 中的数据. 怎么做?
+	// 通过 return 返回 num 的数据. 就间接访问到 num 了
+	/*
+	var res = foo();
+	alert( res );
+	var res2 = foo();
+	alert( res2 );
+	*/
+	// 此时 res 与  res2 不同.
+
+
+	// 要间接访问这个内存空间中的数据. 使用 return 来获得. 错误的.
+
+
+	// 再来看一个案例
+	function foo () {
+		var num = Math.random();   // Math.random() 是用来创建 0 到 1 的一个随机数的.
+		return num;
+	}
+	var res = foo();
+	console.log( res );
+	var res2 = foo();
+	console.log( res2 );
+
+	// 使用 return 并不是间接访问原来的那个数据
+</script>
+</html>

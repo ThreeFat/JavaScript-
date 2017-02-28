@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10-作用域链的绘制规则.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	var num;
+	function foo () {}
+	var arr = [];
+
+	// 就表明 0 级链中有三个成员
+	*/
+
+	/*
+	var num;
+	function foo () {}
+	var arr = [];
+	function func () {}
+	// 表明 0 级链上 有 四个成员
+	// 其中 foo 和 func 可以延展出两条 独立的 1 级链
+	*/
+
+
+	var num;
+	function foo () {
+		console.log( num ); 		// 函数体
+		var num = 123;
+		console.log( num );			// 123
+		function num () {} 
+	}
+	var arr = [];
+	function func () {}
+
+	foo();
+
+
+
+</script>
+</html>

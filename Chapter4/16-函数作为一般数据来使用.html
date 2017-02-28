@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>16-函数作为一般数据来使用.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 4. 函数是基本的对象类型. 可以作为变量赋值, 可以作为参数使用, 也可以作为返回值使用
+	// 写一个函数, 返回 数字, 字符串, 对象, 数组
+	/*
+	function f1 () {
+		return 123;
+	}
+	function f2 () {
+		return 'Hello World';
+	}
+	function f3 () {
+		return { name:"itcast" };
+	}
+	function f4 () {
+		return [ 1, 2, 3, 4 ];
+	}
+
+	// 就是在函数调用后, 可以获得这些数据
+	var v1 = f1();
+	var v2 = f2();
+	var v3 = f3();
+	var v4 = f4();
+	*/
+
+
+	// 函数返回函数, 怎么写?
+	function foo () {
+		function func () {
+			console.log( '我是一个嵌入在 函数内部的 函数' );
+		}
+
+		return func;
+	}
+
+	var f = foo();
+
+	f();
+
+
+	// 还有很多中写法与调用法
+	foo()();
+
+	function foo () {
+		return function () {
+			console.log( '我是一个直接写在 return 后面的函数' );  
+		};
+	}
+
+
+</script>
+</html>

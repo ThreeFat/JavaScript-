@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04-函数的声明与变量声明同时存在的问题.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	/*
+	function func () {}					// 声明了函数
+
+	// in 运算符
+	console.log( 'func' in window );	// 在当前执行环境中已经存在了 func 标识符
+
+	// func 是一个指向函数的 "变量"
+	console.log( typeof func );			// => function
+
+	// func = 123;
+	func = [ 1, 2, 3, 4 ];
+
+	console.log( 'func = ' + func );
+	console.log( typeof func );
+
+	// 获得对象的类型
+	console.log( Object.prototype.toString.call( func ) );
+	*/
+
+
+
+
+
+
+
+
+
+
+	/*
+	// var num;
+	function num () {
+		console.log( 'Hello js' );
+	}
+	var num;
+
+	console.log( num );  // 函数体
+	*/
+	
+	// 函数的声明与变量的声明意义多一层. 声明变量, 是告诉解释器当前环境可以使用该名字了.
+	// 而声明函数, 是告诉解释器, 除了可以使用该名字, 该名字还表示一个函数体.
+
+	// 1>
+	// 先 var num; 后 function num ...
+	// 首先告知解释器有 名字 num 了
+	// 后面是函数声明. 由于已经有 num 名字可以使用了, 所以就不再告诉解释器可以使用 num
+	// 而是直接将 num 与函数结合在起义.
+
+	// 2>
+	// 先 function num ... 后 var num;
+	// 一开始已经有 num 了, 而且是函数. 所以后面的 var num; 属于重复声明.
+
+	var num;
+	function num () {
+		console.log( 'Hello js' );
+
+	}
+
+
+
+
+	console.log( num ); 
+
+
+</script>
+</html>

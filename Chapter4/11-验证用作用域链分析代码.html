@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	
+</body>
+<script>
+	var num = 123;
+	function f1 () {
+		console.log( num );
+	}
+	function f2 () {
+		console.log( num );   // => 123 , 456, 456
+		num = 456;			
+		f1();
+		console.log( num );
+	}
+	f2();
+</script>
+</html>

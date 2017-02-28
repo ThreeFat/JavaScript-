@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>15-函数作为一般数据来使用.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 作为一般的数据来使用
+	// 1. 赋值
+	/*
+	function foo () {
+		console.log( 'Hello World' );
+	}
+	var func = foo;
+	// 函数体只有一个, 是将 函数的引用 赋值给了 func
+	// 因此 func 和 foo 指向同一个函数, 也可以调用该函数
+	foo();
+	func();
+	*/
+
+	// 2. 赋值的扩展
+	/*
+	function foo () {
+		console.log( 'Hello World' );
+	}
+	var arr = [];
+	arr[ 0 ] = foo();
+	arr[ 1 ] = foo();
+
+	arr[ 0 ]();
+	arr[ 1 ]();
+	arr[ 2 ]();
+	*/
+
+
+	// 3. 也可以作为参数进行传递
+	// 函数是引用类型
+	// 3.1 作为函数的参数进行传递
+	/*
+	function f1 ( val ) {
+		// 加入要求传入一个 数字, 字符串, 布尔, 对象, 数组
+		// 要求将这些数据打印出来
+		console.log( val );
+	}
+
+	f1( 123 );
+	f1( 'Hello World' );
+	f1( true );
+	f1( { name: '张三', age: 19, gender: '男' } );
+	f1( [ 1, 2, 3, 4, 5 ] );
+
+	// 既然函数是对象
+	function func () {
+		console.log( '我是一个函数' );
+	}
+
+	f1( func ); // 函数名存储的函数引用, 因此将函数作为参数传递时, 直接传递函数名即可
+
+	f1( function () {
+		console.log( '我是一个函数表达式, 作为参数传入' )
+	} );
+	*/
+
+	// 3.2 将函数作为参数传入到函数中, 使用就是调用
+	function foo ( fn ) {
+		// 调用
+		// 如果 fn 是函数, 就调用
+		if ( typeof fn === 'function' ) {
+			fn();
+		} else {
+			console.log( '参数不是函数, 是: ' + fn );
+		}
+	}
+
+	function func1 () {
+		console.log( '我是一个函数声明' );
+	}
+	var func2 = function () {
+		console.log( '我是一个函数表达式' );
+	};
+
+
+
+
+	foo( func1 );
+
+	foo( func2 );
+
+	foo( function () {
+		console.log( '我是一个匿名的函数表达式' );
+	} );
+
+
+	foo( 123 );
+	foo( true );
+	foo( {} );
+
+</script>
+</html>

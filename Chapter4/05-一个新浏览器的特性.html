@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>一个新浏览器的特性</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+	// if ( true ) {
+	// 	// 以声明的形式来解释
+	// 	function foo() {
+	// 		console.log( true );
+	// 	}
+
+	// } else {
+	// 	function foo() {
+	// 		console.log( false );
+	// 	}
+	// }
+	// foo();
+
+	// 在早期的浏览器中( 2015 年 ) 所有的浏览器( 除了火狐 )都是将其解释为声明 : false
+
+
+
+
+	// 但是现在的运行结果, 得到: true. 表示 if 起到了作用
+	if ( true ) {
+		// 以声明的形式来解释
+		function foo1() {
+			console.log( true );
+		}
+
+	} else {
+		function foo2() {
+			console.log( false );
+		}
+	}
+	foo1();
+	// foo2();  // error: foo2 is not function. 已定义, 但是函数为被指向
+
+	// 好比: var foo1 = function foo1 () { ... }
+
+	// 虽然这两个函数不是声明, 但是也不能解释成函数表达式. 如果是函数表达式 foo1 与 foo2 只能在
+	// 函数内部使用.
+
+
+</script>
+</html>
