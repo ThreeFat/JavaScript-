@@ -1,2 +1,2 @@
-# JavaScript-
+# JavaScript面向对象高级
 JavaScript面向对象进阶,在原来的基础上更上一层,了解JavaScript语言的编程理念和面向对象编程的思想
