@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01-给页面中所有的div和p标签添加样式</title>
+</head>
+<body>
+	<!-- 给 div 与 p 标签添加边框, 设置宽高 -->
+	<div>div1</div>
+	<p>p标签</p>
+	<div>div2</div>
+</body>
+<script>
+	// 首先需要获得标签
+
+	// get*by*的方法名太长, 可以自定义函数, 传入标签名返回所有标签
+
+	// 利用函数封装较长的功能
+	function tag ( tagName ) {
+		// 返回页面中 标签名为 tagName 的所有标签
+		return document.getElementsByTagName( tagName );
+	}
+	var divs = tag ( 'div' );
+	var ps = tag ( 'p' ); 
+
+
+	// 设置样式
+	// 由于 get*by* 返回的是  "数组"
+
+	// 封装函数进行循环
+	// function addCss ( array, border, width, height ) {
+	// 	for ( var i = 0; i < array.length; i++ ) {
+	// 		array[ i ].style.border = border;
+	// 		array[ i ].style.width = width;
+	// 		array[ i ].style.height = height;
+	// 	}
+	// }
+	// addCss( divs, '1px solid red', '400px', '50px' );
+	// addCss( ps, '1px solid blue', '200px', '10px' );
+	
+	// addCss 的改良
+	function addCss ( array, styles ) {      
+		for ( var i = 0; i < array.length; i++ ) {
+			for ( var k in styles ) {
+				array[ i ].style[ k ] = styles[ k ]; 
+			}
+		}
+	}
+	// styles 是类似: { border: '1px solid blue', width: 100px }
+	// array[ i ].style[ 'border' ] = styles[ 'border' ]
+	addCss( divs, {
+		border: '1px dashed red',
+		backgroundColor: 'pink'
+	} );
+	addCss( ps, {
+		border: '5px dotted blue',
+		width: '400px',
+		height: '200px'
+	} );
+
+</script>
+</html>

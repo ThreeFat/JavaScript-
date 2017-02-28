@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01-给页面中所有的div和p标签添加样式</title>
+</head>
+<body>
+	<!-- 给 div 与 p 标签添加边框, 设置宽高 -->
+	<div>div1</div>
+	<p>p标签</p>
+	<div>div2</div>
+</body>
+<script>
+	// 首先需要获得标签
+	var divs = document.getElementsByTagName( 'div' ); // 获得所有的 div 标签
+	var ps = document.getElementsByTagName( 'p' );     // 获得所有的 p 标签
+
+	// 设置样式
+	// 由于 get*by* 返回的是  "数组"
+	for ( var i = 0; i < divs.length; i++ ) {
+		divs[ i ].style.border = '1px solid red';
+		divs[ i ].style.width = '300px';
+		divs[ i ].style.height = '100px';
+	}
+
+	for ( var i = 0; i < ps.length; i++ ) {
+		ps[ i ].style.border = '1px solid blue';
+		ps[ i ].style.width = '300px';
+		ps[ i ].style.height = '100px';
+	}
+
+
+</script>
+</html>

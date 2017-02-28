@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12-值类型与引用类型的函数参数传递特性</title>
+</head>
+<body>
+
+</body>
+<script>
+	// function foo ( num ) {
+	// 	console.log( 'num = ' + num );
+	// 	num++;
+	// 	console.log( 'num = ' + num );
+	// }
+
+	// var a = 123;
+	// console.log( 'a = ' + a );
+
+	// foo( a ) ;
+
+	// console.log( 'a = ' + a );
+
+
+
+	function foo ( num ) {
+		console.log( 'num = ' + num );
+		num[ 0 ]++;
+		console.log( 'num = ' + num );
+	}
+
+	var a = [ 123 ];
+	console.log( 'a = ' + a );
+
+	foo( a ) ;
+
+	console.log( 'a = ' + a );
+
+
+
+</script>
+</html>

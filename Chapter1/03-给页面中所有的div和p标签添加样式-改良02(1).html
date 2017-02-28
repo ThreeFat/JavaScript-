@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01-给页面中所有的div和p标签添加样式</title>
+	<script src="...js"></script>
+	<script src="...js"></script>
+	<script src="...js"></script>
+
+</head>
+<body>
+	<!-- 给 div 与 p 标签添加边框, 设置宽高 -->
+	<div>div1</div>
+	<p>p标签</p>
+	<div>div2</div>
+</body>
+<script>
+	
+	// function getId() {}
+	// function getByClass() {}
+	// setAttr
+	// ...
+
+	// 自己定义函数越多, 那么开发的时候就会越方便
+	// 但是也有隐患, 自己定义的越多, 那么与引入的框架出现冲突的几率也就最大
+	// 一旦出现某个名字冲突了, 那么就会造成框架中某些功能无法使用
+
+	// function tag ( tagName ) {
+	// 	return document.getElementsByTagName( tagName );
+	// }
+
+	// function addCss ( array, styles ) {      
+	// 	for ( var i = 0; i < array.length; i++ ) {
+	// 		for ( var k in styles ) {
+	// 			array[ i ].style[ k ] = styles[ k ]; 
+	// 		}
+	// 	}
+	// }
+	
+	// 怎么办?
+	// 定义的名字最多, 问题的几率越大, 所以最简单的办法就是尽可能少定义名字
+	// 定义一个对象, 然后所有的函数, 变成这个对象的方法即可
+	var itcast = {
+		tag: function ( tagName ) {
+			return document.getElementsByTagName( tagName );
+		}, addCss: function ( array, styles ) {
+			for ( var i = 0; i < array.length; i++ ) {
+				for ( var k in styles ) {
+					array[ i ].style[ k ] = styles[ k ]; 
+				}
+			}
+		}
+	};
+
+	var divs = itcast.tag ( 'div' );
+	var ps = itcast.tag ( 'p' ); 
+
+	
+	itcast.addCss( divs, {
+		border: '3px dashed green',
+		backgroundColor: 'pink'
+	} );
+	itcast.addCss( ps, {
+		border: '5px dotted red',
+		width: '400px',
+		height: '200px'
+	} );
+
+</script>
+</html>

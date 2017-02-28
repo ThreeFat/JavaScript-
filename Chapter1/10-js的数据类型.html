@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10-js的数据类型</title>
+</head>
+<body>
+
+</body>
+<script>
+	var num = 123;
+	var isTrue = false;
+	var str = 'Hello JS';
+
+	console.log( num + ', ' + typeof num );
+	console.log( isTrue + ', ' + typeof isTrue );
+	console.log( str + ', ' + typeof str );   
+
+
+	var arr = [ 1, 2, 3 ];
+	var fn = function () {};
+	var o = { name: 'itcast' };
+
+	console.log( typeof arr );
+	console.log( typeof fn );
+	console.log( typeof o ); 
+	console.log( typeof new Date() );
+
+	console.log( '------------------------------------' );
+	console.log(  Object.prototype.toString.apply( arr ) );
+	console.log(  Object.prototype.toString.apply( fn ) );
+	console.log(  Object.prototype.toString.apply( o ) );
+	console.log(  Object.prototype.toString.apply( new Date() ) );
+
+	console.log(  Object.prototype.toString.apply( null ) );
+	console.log(  Object.prototype.toString.apply( undefined ) );
+
+
+</script>
+</html>
