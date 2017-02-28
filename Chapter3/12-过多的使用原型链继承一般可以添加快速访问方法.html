@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12-过多的使用原型链继承一般可以添加快速访问方法</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var o = {
+		method: function () {
+			console.log( '我是一个非常顶级的方法' );
+		}
+	};
+
+	function Person () {}
+	Person.prototype = o;
+
+	function Student () {
+
+		this.method = Person.prototype.method;
+		
+	}
+	Student.prototype = new Person();
+
+	var s = new Student();
+
+	// s.method = s.__proto__.__proto__.method;
+
+
+
+	s.method();
+
+
+
+
+
+</script>
+</html>

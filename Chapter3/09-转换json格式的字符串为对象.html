@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>转json字符串为对象</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// var data = '[ { name: "张三", age: 19, gender: "男"}, { name: "李四", age: 18, gender: "女"} ]';
+	var data = '[ { "name": "张三", "age": 19, "gender": "男"}, { "name": "李四", "age": 18, "gender": "女"} ]';
+
+	//  json 格式( 严格的国际通用数据表示协议, 结构 )
+	//  在 js 中使用的 json 对象, 相对较松散
+	// json 格式 有两种结构
+	//	1: {}
+	// 	2: []
+	// 注意: json 格式中, 键名也必须使用双引号括起来.
+
+	// 将字符串变成对象, 有三种做法
+	// 1. eval 做法
+	var o1 = eval( "(" + data + ")" );   // 注意一个习惯. 就是数据两端一般加上圆括号为好
+
+	// 2. Function 做法
+	var o2 = (new Function( 'return ' + data ))();
+
+	// 3. 使用 ES5 中引入的标准处理 JSON 的语法
+	// JSON.parse(  )
+	// 注意: 字符串必须是严格是 json 格式
+	var o3 = JSON.parse( data );
+</script>
+
+
+</html>

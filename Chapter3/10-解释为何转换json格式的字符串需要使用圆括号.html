@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10-解释为何转换json格式的字符串需要使用圆括号.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// eval 函数 本质是执行 js 代码的
+	// json 格式有两种:
+	//  1> { ... }
+	//  2> [ ... ]
+
+	var s1 = '{  }';
+	var o1 = eval( "(" + s1 + ")" ); 	// 没有任何结果
+
+	var s2 = '{ name: "张三" }'
+	var o2 = eval( "(" + s2 + ")" );	// 没有得到对象, 而是得到了一个字符串
+
+
+	var s3 = '{ name: "张三", age: 19 }';
+	var o3 = eval( "(" + s3 + ")" );	// 出现错误
+
+	// 即使将字符串写成 json 格式的形式也不行
+	// { "name": "张三" }
+
+	// eval 是用来执行 字符串表示的 js 代码 的. 所以隐含的数据里面
+	// {} 实际上是代码块的含义. 
+
+	// 代码块: 
+	// if () { ... }
+	// for () { ... }
+	/*
+	label:
+	while () {
+		while () {
+			while () {
+				... 
+				break label;
+			}
+		}
+	}
+	...
+	*/
+
+	
+	label123:
+	while ( true ) {
+		console.log( '第一层循环开始' );
+		while ( true ) {
+			console.log( '第二层循环开始' );
+			
+			while ( true ) {
+				console.log( '第三层循环开始' );
+				break label123;
+				console.log( '第三层循环结束' );
+			}
+
+			console.log( '第二层循环结束' );
+		}		
+		console.log( '第一层循环结束' );
+	}
+	console.log( 'over' );
+	
+</script>
+</html>

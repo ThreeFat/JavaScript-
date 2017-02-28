@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06-callee与caller.html</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 1. callee
+	// 	语法: arguments.callee 
+	//	当前函数的引用
+	function foo () {
+
+		console.log( arguments.callee === foo );
+	}
+
+	foo();
+	/*
+	// 一般在函数内部, 实现函数递归的时候, 我们一般使用 callee 表示函数的引用
+
+	// 传统的递归方法
+	function fn () {
+		fn(); // 自己调用自己
+	}
+	fn();
+
+	// 新的方法
+	function fn() {
+		arguments.callee();  // 使用 callee 来递归
+	}
+	fn();
+	*/
+
+
+	// js 是一个弱类型的语言, 可以随意赋值
+	/*
+	function f() {
+		console.log( 'Hello JS' );
+	}
+
+	f = 0;  // 赋值
+
+	console.log( f );
+	*/
+
+
+
+	// 2. caller 拜师调用函数
+	// 在函数 f1 中 调用 函数 f2
+
+	// function f1 () {
+	// 	f2();
+	// }
+	
+	// f1();
+	// f1 就是称为调用者. 调用的发起人.
+	// f2 就是被调用者
+
+	// caller 就是在被调用函数中, 获得调用函数的引用
+
+	// 语法: 函数名.caller
+	function f2 () {
+		console.log( f2.caller );
+	}
+
+	function itcast() {
+		f2();	
+	}
+
+	itcast();
+</script>
+</html>

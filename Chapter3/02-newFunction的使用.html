@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02-newFunction的使用</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// new Function( arg0, arg1, ..., argN, body )
+
+	// Function 的所有的参数, 除了最后一个以外, 都是生成的函数的参数
+	// 最后一个参数是 函数体
+
+
+	// 案例1: 求两个数字的和
+	function getSum ( num1, num2 ) {
+
+		return num1 + num2;
+
+	}
+
+	var getSum2 = new Function ( 'num1', 'num2', 'return num1 + num2;' ); 
+
+	// 即生成函数
+	console.log( getSum2( 1235, 678 ) ); // 1913
+
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05-使用arguments改写extend函数</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// mix (混入)
+	function extend() {
+		var args = arguments;
+		if ( args.length == 1 ) {  		// 混入到 this 中
+			for ( var k in args[ 0 ] ) {
+				this[ k ] = args[ 0 ][ k ];
+			}
+		} else {						// 混入到 argu...[ 0 ] 中
+			// 如果需要将多个属性或对象混入到某个属性或对象
+			// 将传入的对象或属性,参数添加到第一个对象或属性上
+			for ( var k in args[ 1 ] ) {
+				args[ 0 ][ k ] = args[ 1 ][ k ];
+			}
+		}
+	}
+
+
+	var o1 = { name: '张三' };
+	var o2 = { age: 19, gender: '男' };
+	var o3 = {};
+
+	extend( o1, o2 );
+
+	console.log(o1);
+
+	// 将extend方法赋值给 o3.extend 使它具备了extend的功能
+	o3.extend = extend;
+
+	o3.extend( o1, o2 );   // o1, o2, o3 分别怎么变化?
+
+	// o3.extend( o2 );
+
+	console.log(o3);
+
+</script>
+</html>

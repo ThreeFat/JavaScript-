@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04-函数的相关参数-arguments</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function sum () {
+		// 所有的参数都会存储到 arguments 中
+		var sum = 0;
+		for ( var i = 0; i < arguments.length; i++ ) {
+			sum += arguments[ i ];
+		}
+		return sum;
+	}
+
+
+	console.log( sum( 1, 4, 2, 7, 5, 9 ) );
+</script>
+</html>
