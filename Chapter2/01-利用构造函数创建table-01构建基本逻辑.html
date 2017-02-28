@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01-利用构造函数创建table</title>
+</head>
+<body>
+	
+</body>
+<script>
+
+	function cTag( tagName ) {
+		return document.createElement( tagName );
+	}
+
+	function Table (width,border) {
+		// 实际上在调用这个构造函数的时候, 应该利用 DOM
+		// 方法创建相应的 table 标签与 tbody 标签
+		this.DOM = cTag( 'table' );
+		this.DOM.appendChild( cTag( 'tbody' ) );
+		this.DOM.style.width = width+'px';
+		this.DOM.style.border = border;
+	}
+
+
+
+	var t = new Table( 400, '5px solid red' );
+//	t.width( 400 );	// 利用参数添加表格的属性
+
+
+	// t.add( tr )
+	// 在开发中有一个原则, 就是尽量不去修改原生的对象
+
+
+	document.body.appendChild( t.DOM );
+
+</script>
+</html>

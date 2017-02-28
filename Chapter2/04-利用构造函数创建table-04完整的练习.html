@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01-利用构造函数创建table</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function cTag( tagName ) {
+		return document.createElement( tagName );
+	}
+	// table 的构造函数, 用于创建 table 标签
+	function Table ( option ) {
+		// 创建元素
+		this.DOM = cTag( 'table' );
+		// 给元素添加属性
+		for ( var k in option ) {
+			this.DOM.setAttribute( k, option[ k ] );
+		}
+		// 给 table 添加一个 tbody 元素
+		this.DOM.appendChild( cTag( 'tbody' ) );
+		// 给创建的元素定义一个 add 方法 用于添加元素
+		this.add = function ( tr ) {
+			this.DOM.lastChild.appendChild( tr.DOM )
+		};
+	}
+	// tr 的构造函数, 用于创建 tr 标签
+	function Tr() {
+		// 创建元素
+		this.DOM = cTag( 'tr' );
+		// 添加元素方法
+		this.add = function ( td ) {
+			this.DOM.appendChild( td.DOM );
+		};
+	}
+	// td 的构造函数, 用于创建 td 标签
+	function Td( value, option ) {
+		var td = cTag( 'td' );
+		for ( var k in option ) {
+			td.setAttribute( k, option[ k ] );
+		}
+		td.innerHTML = value;  
+
+		this.DOM = td;
+	}
+	// 模拟一个数据
+	var arr = [
+		{ name: 'jim1', age: 19, gender: '男' },
+		{ name: 'jim2', age: 18, gender: '男' },
+		{ name: 'jim3', age: 20, gender: '男' },
+		{ name: 'jim4', age: 18, gender: '男' }
+	];
+
+	// 创建表格
+	var table = new Table( { width: 600, border: 1 } ) ;
+
+	// 有多少条数据就创建多少行
+	for ( var i = 0; i < arr.length; i++ ) {
+		var tr = new Tr();
+		// 根据数据创建 td
+		for ( var k in arr[ i ] ) {
+			// 二维数组,将一维数组中的每一项遍历,再把数据遍历出来.
+			var td = new Td( arr[ i ][ k ] );
+			// 将 td 添加到 tr 中.
+			tr.add( td );
+		}
+		// 将行加入到 table
+		table.add( tr );
+	}
+	// 在页面里添加表单
+	document.body.appendChild( table.DOM );
+
+</script>
+</html>

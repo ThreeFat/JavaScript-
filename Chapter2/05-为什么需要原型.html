@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05-为什么需要原型</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 例如创建一个 Person 的构造函数, 让人有名字, 可以说话
+	function Person ( name ) {
+		this.name = name;
+		// 可以说话, 需要有一个方法
+		this.sayHello = function () {
+			console.log( '你好, 我是 ' + this.name );
+		};
+	}
+
+	var p1 = new Person( '李雷' );
+	var p2 = new Person( '韩梅梅' );
+
+	p1.sayHello();
+	p2.sayHello();
+
+	// 只要执行一次函数, 那么函数内部的所有内容, 都会被创建出一次
+	// 由于函数 Person 创建对象的时候 会 同时生成 里面的 sayHello 方法
+	// 因此使得每一个 Person 的对象, 都包含一个内容完全相同, 不同的 sayHello 方法
+
+	// 验证
+	console.log( p1.sayHello == p2.sayHello );
+
+	// 每一个由构造函数 Person 创建的对象都会包含 一个 独立的 独有的 sayHello 方法
+
+</script>
+</html>

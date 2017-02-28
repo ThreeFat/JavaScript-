@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>12-属性搜索原则</title>
+</head>
+<body>
+	
+</body>
+<script>
+	
+	function Person ( name, age, gender ) {
+		// this.name = name;
+		this.age = age;
+		this.gender = gender;
+	}
+	
+	// Person.prototype.name = 'itcast';
+
+	var p = new Person( '李雷', 19, '男' );
+
+	console.log( p.name );
+
+	// 当实例对象需求的属性或方法在构造函数及构造函数的原型对象上都无法找到时
+	// 将会返回undefined 
+
+</script>
+</html>

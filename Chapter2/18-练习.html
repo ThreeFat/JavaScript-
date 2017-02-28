@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <p class="hh ss"></p>
+ <p class="hh ss"></p>
+</body>
+<script>
+    var results=new Array();
+    var elems=document.getElementsByTagName("*");
+    for (var i=0; i<elems.length; i++) {
+        if (elems[i].className.indexOf('hh')!=-1) {
+            console.log(elems[i])
+            results[results.length]=elems[i];
+         }
+    }
+    console.log(results)
+</script>
+</html>

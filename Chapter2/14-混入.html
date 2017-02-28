@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>14-混入</title>
+</head>
+<body>
+	
+</body>
+<script>
+	
+	// function __mix__ ( obj, obj1 ) {
+
+	// 	for ( var k in obj1 ) {
+
+	// 		// console.log( 'k = ' + k + ', typeof k = ' + typeof k );
+
+	// 		obj[ k ] = obj1[ k ];
+	// 	}
+
+	// }
+
+
+	// var o1 = { name: '张三', age: 19 };
+
+	// var o2 = { gender: '男' };
+
+	// __mix__( o2, o1 );
+
+
+
+
+
+	// 希望混入是一个方法, 将别人的东西加到我身上
+	// __mix__( 原对象, 新对象 )
+	// 原对象.__mix__( 新对象 )
+	// var o = {
+	// 	__mix__: function ( obj ) {
+	// 		// 将 obj 中的成员 加到 当前对象 this 上
+	// 		for ( var k in obj ) {
+	// 			this[ k ] = obj[ k ]; 
+	// 		}
+	// 	}
+	// };
+	
+	// 一般现在很多开发库, 都使用 extend 名字
+	// var o = {
+	// 	extend: function ( obj ) {
+	// 		// 将 obj 中的成员 加到 当前对象 this 上
+	// 		for ( var k in obj ) {
+	// 			this[ k ] = obj[ k ]; 
+	// 		}
+	// 	}
+	// };
+
+	// 我的 extend 方法可以带多个参数. 如果是多个参数, 要求将所有对象的成员
+	// 都加到 this 当前对象上.
+	
+	// 在函数中有一个默认的对象存在 即 arguments 它里面存储着所有的传入的参数
+	var o = {
+		extend: function ( obj ) {
+			// 将 obj 中的成员 加到 当前对象 this 上
+			console.log(arguments)
+			for ( var i = 0; i < arguments.length; i++ ) {
+				for ( var k in arguments[ i ] ) {
+					this[k] = arguments[ i ][ k ];
+
+				}
+			}
+		}
+	};
+
+
+	o.extend({name: '李四'}, {age: 19, gender: '男'}, {sayHello: function () {
+
+		console.log( 'Hello JS' )
+
+	}
+	});
+	console.log(o.name);
+
+</script>
+</html>

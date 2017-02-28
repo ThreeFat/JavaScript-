@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09-使用prototype改良代码</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 例如创建一个 Person 的构造函数, 让人有名字, 可以说话
+	function Person ( name ) {
+		this.name = name;
+	}
+	// 给Person的原型添加一个 sayhello 方法
+	Person.prototype.sayHello = function () {
+		console.log( '你好, 我是 ' + this.name );
+	};
+	// 给Person的原型添加一个 walk方法
+	Person.prototype.walk = function () {
+		console.log( this.name + ' 走了' );
+	}; 
+
+	var p1 = new Person( '李雷' );
+	var p2 = new Person( '韩梅梅' );
+
+	p1.sayHello();
+	p2.sayHello();
+
+
+	// 验证
+	console.log( p1.sayHello == p2.sayHello );  //true
+
+	// 两个实例对象调用的是构造函数的原型对象上的方法
+	// 它们指向同一个构造函数,而 sayhello 方法在构造函数的原型对象上,不需要创建一个新的方法
+	// 直接调用原型链上的方法即可, 所以它们调用的是同一个方法 
+
+</script>
+</html>

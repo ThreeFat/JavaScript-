@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>如果修改原型对象中的属性值会怎样</title>
+</head>
+<body>
+	
+</body>
+<script>
+	
+	function Person () {
+	}
+	
+	Person.prototype.name = 'itcast';
+
+	var p = new Person();
+
+	console.log( p.name );
+
+	p.name = 'itheima';
+
+	console.log( p.name );
+
+	// 如果我又创建一个对象
+	var p1 = new Person();
+	console.log( 'p1: ' + p1.name );
+
+</script>
+</html>

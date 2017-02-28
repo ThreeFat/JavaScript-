@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>15-混合式继承</title>
+</head>
+<body>
+	
+</body>
+<script>
+	
+	function Person () {}
+
+	Person.prototype.extend = function ( obj ) {
+		for ( var k in obj ) {
+			this[ k ] = obj[ k ];
+		}
+	};
+
+	var p = new Person();
+
+
+	// 继承
+	Person.prototype.extend( { 
+		sayHello: function () { 
+			console.log( '你好, 我是新加的' )
+		}, 
+		walk: function () {},
+		eat: function () {}
+	} );
+	Person.prototype.haha = function{}
+
+	console.log(Person.prototype);
+	p.sayHello();
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>17-使用原型修改Table案例</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function itcastElement() {}
+
+	itcastElement.prototype = {
+		constructor: itcastElement,
+
+		add: function ( element ) {
+			if ( this.DOM ) {
+				this.DOM.appendChild( element.DOM );
+			}
+		}, css: function ( styles ) {
+
+		}, attr: function ( attrs ) {
+			for ( var k in attrs ) {
+				this.DOM.setAttribute( k, attrs[ k ] );
+			}
+		}
+	}
+
+	// 工具方法
+	itcastElement.cTag = function ( tagName ) {
+		return document.createElement( tagName );
+	}
+
+	// 创建用来派生的父对象
+	var base = new itcastElement();
+
+
+	// 创建子类
+	function Table () {
+		this.DOM = itcastElement.cTag( 'table' );
+	}
+	Table.prototype = base;
+
+	function TBody() {
+		this.DOM = itcastElement.cTag( 'tbody' );	
+	}
+	TBody.prototype = base;
+
+	function Tr() {
+		this.DOM = itcastElement.cTag( 'tr' );		
+	}
+	Tr.prototype = base;
+
+	function Td() {
+		this.DOM = itcastElement.cTag( 'td' );		
+	}
+	Td.prototype = base;
+
+/*
+	// 创建一个 table 对象
+	var t = new Table();
+
+	t.attr( { border: 1, width: 400 } );
+
+	var tbody = new TBody();
+	t.add( tbody );
+
+	var tr = new Tr();
+	var td = new Td();
+
+	tbody.add( tr );
+	tr.add( td );
+
+	td.DOM.innerHTML = '测试文本';
+
+
+	// 加到 dom 中
+	document.body.appendChild( t.DOM );
+*/
+
+	var arr = [
+		{ name: 'jim1', age: 19, gender: '男' },
+		{ name: 'jim2', age: 18, gender: '男' },
+		{ name: 'jim3', age: 20, gender: '男' },
+		{ name: 'jim4', age: 18, gender: '男' }
+	];
+
+	// 1, 创建 table
+	var t = new Table();
+	t.attr( { width: 400, border: 1 } );
+	var tBody = new TBody();
+	t.add( tBody );
+	
+	// 2, 根据数据创建 行与列
+	for ( var i = 0; i < arr.length; i++ ) {
+		var tr = new Tr();
+		for ( var k in arr[ i ] ) {
+			var td = new Td();
+			td.DOM.innerHTML = arr[ i ][ k ];
+			tr.add( td );
+		}
+		tBody.add( tr );
+	}
+
+	// 3, 加到 页面中
+	document.body.appendChild( t.DOM );
+
+
+</script>
+</html>

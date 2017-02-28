@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11-如何使用原型对象</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 首先需要构造函数, 原则就是将方法放在 原型中
+	function Person ( name, age, gender ) {
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+	}
+	// 让 Person.prototype 指向另一个对象. 直接赋值
+	Person.prototype = {
+		// 原型指向的构造函数 constructor 属性
+		constructor: Person,
+		
+		sayHello: function () {
+			console.log( '第二种做法: 你好, 我是 ' + this.name );	
+		}, eat: function () {
+			console.log( '第二种做法: ' + this.name + ' 在吃饭' );
+		}, run: function () {
+			console.log( '第二种做法: ' + this.name + ' 在跑步. 已经跑了 ' + this.age + ' 年' );
+		}
+	};
+
+	var p1 = new Person( 'lilei', 19, '男' );
+	var p2 = new Person( 'hanmeimei', 18, '女' );
+
+
+	p1.sayHello();
+	p1.eat();
+	p1.run();
+
+	console.log( '--------------------------' );
+	p2.sayHello();
+	p2.eat();
+	p2.run();
+
+
+</script>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01-利用构造函数创建table</title>
+</head>
+<body>
+	
+</body>
+<script>
+/*
+	function cTag( tagName ) {
+		return document.createElement( tagName );
+	}
+
+	function Table ( width, border ) {
+
+
+		this.DOM = cTag( 'table' );
+		this.DOM.appendChild( cTag( 'tbody' ) );
+
+
+		this.DOM.width = width;
+		this.DOM.border = border;
+
+
+
+		// 利用方法设置 width 与 border
+		this.width = function ( w ) {
+			this.DOM.width = w;
+		};
+		this.border = function ( border ) {
+			this.DOM.border = border;
+		}
+
+	}
+
+
+
+	var t = new Table( 500, 2 );
+	// t.width( 400 );	// 利用参数添加表格的属性
+	// t.border( 1 );
+
+	// t.add( tr )
+	// 在开发中有一个原则, 就是尽量不去修改原生的对象
+
+
+	document.body.appendChild( t.DOM );
+
+
+*/
+
+	// 由于属性非常多, 但是没有直接的方法去控制用户输入什么
+	// 而且 HTML 标签是支持用户自定义属性的. 构造函数的参数就没有办法
+	// 控制了. 利用 json 对象提供参数
+	// 例如:
+	// var t = new Table( { width: 400, border: 1, itcast: '传智播客' } ); 
+
+
+	function cTag( tagName ) {
+		return document.createElement( tagName );
+	}
+	function Table ( option ) {
+		var table = cTag( 'table' );
+		// 设置 属性
+		// 利用 for-in 循环获得 option 中所有的属性名
+		for ( var k in option ) {
+			// table[ k ] = option[ k ];
+			// table[ 'width' ] 等价与 table.width
+			table.setAttribute( k, option[ k ] );
+		}
+
+		this.DOM = table;
+		table.appendChild( cTag( 'tbody' ) );
+
+	}
+
+	var t = new Table( { width: 400, border: 1, itcast: '传智播客' } ); 
+
+	function Tr() {
+		this.DOM = cTag( 'tr' );
+	}
+
+	var tr = new Tr();
+
+	t.add( tr );
+
+	document.body.appendChild( t.DOM );
+</script>
+</html>

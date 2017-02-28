@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>16-使用Object.create创建对象</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 基本语法
+	// 返回是对象 Object.create( 对象 )
+
+	// 返回的对象满足: 原型对象 就是 参数中的 对象
+
+	var o = { name: '张三', age: 20, gender: '男' };
+	var obj = Object.create( o );
+
+	// 实现继承的快速方法
+
+	// ES3
+	Object.create = function ( o ) {
+		function F() {}
+		F.prototype = o;
+		return new F();
+	};
+	// ES5 中内置了 该方法
+
+
+
+	// 如果在低版本的浏览器中要使用该方法: 先判断有没有. 如果没有再加上
+	if ( !Object.create ) {
+			Object.create = function ( o ) {
+			function F() {}
+			F.prototype = o;
+			return new F();
+		};
+	}
+	// 这个写法是 5 年前的写法. 它的思想是直接在内置对象上添加成员.
+	// 在书写兼容代码的时候. 一般是写一个通用的函数或方法. 在函数或方法判断
+	// 是否具有原生的方法, 如果有直接使用系统自带的. 如果没有, 我们再自己实现
+	function createWithObject ( obj ) {
+		if ( Object.create ) {
+			return Object.create( obj );
+		} else {
+			function F() {}
+			F.prototype = obj;
+			return new F();
+		}
+	} 
+
+
+	// jQuery
+	// Sizzle 引擎 select 方法
+	// 在这个方法, 首先判断系统是否具有 querySelectAll 方法. 如果有直接使用
+	// 如果没有 再自己实现
+
+	// 作业: 如何实现兼容 低版本的 IE 可以使用 document.getElementsByClassName
+</script>
+</html>

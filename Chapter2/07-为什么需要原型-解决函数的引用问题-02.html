@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>07-为什么需要原型-解决函数的引用问题-02</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 定义很多方法
+	var tools = {
+		sayHello: function () {
+			console.log( '你好, 我是 ' + this.name );
+		}, walk: function () {},
+		sleep: function () {},
+		eat: function () {}
+		// ...
+	};
+
+
+	// 例如创建一个 Person 的构造函数, 让人有名字, 可以说话
+	function Person ( name ) {
+		this.name = name;
+		// 可以说话, 需要有一个方法
+		// 所以在这里引用外部的一个方法
+		this.sayHello = tools.sayHello;
+	}
+
+	var p1 = new Person( '李雷' );
+	var p2 = new Person( '韩梅梅' );
+
+	p1.sayHello();
+	p2.sayHello();
+
+	// 验证
+	console.log( p1.sayHello == p2.sayHello );  //true
+
+	// 指向的原型还是相同的
+
+
+
+</script>
+</html>
