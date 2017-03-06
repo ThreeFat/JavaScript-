@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+	// 案例： 在 'abc123def456ghij789klum' 提取数字
+
+	var str = 'abc123def456ghij789klum';
+	// 1> 全局模式
+	var r = /\d+/g;
+
+	// 2> 匹配要使用循环的方式
+	var res;
+
+	while ( res = r.exec( str ) ) {
+		console.log( res );
+	}
+
+</script>
+</html>

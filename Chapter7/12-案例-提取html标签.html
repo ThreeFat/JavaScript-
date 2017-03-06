@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+	var str = '123<div>456</div>78<div>9</div>0<i></i>abc';
+	var r = /<(\w+)>.*?<\/\1>/g;
+
+	var res;
+
+	while ( res = r.exec(str) ) {
+
+		console.log( res[ 0 ] );
+
+	}
+
+</script>
+</html>

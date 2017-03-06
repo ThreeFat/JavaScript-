@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+	var str = '我有一个邮箱, 是 abc@itcast.cn, 还有 abc@126.com, 和 1234567@qq.com'
+	var r = /([a-zA-Z\d]+)@([a-zA-Z\d]+(?:\.[a-zA-Z\d]+)+)/g;
+
+	// var res = r.exec( str );
+
+
+	var res;
+
+	while ( res = r.exec( str ) ) {
+
+		console.log( '邮箱是: ' + res[ 0 ] + 
+					 ', 用户名: ' + res[ 1 ] + 
+					 ', 主机名: ' + res[ 2 ] );
+	}
+
+</script>
+</html>

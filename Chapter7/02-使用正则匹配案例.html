@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+	// 查询一段文字中是否包含 itcast
+	//		   0123456789012345678901
+	var str = 'qwertyuiopasdfghjklxcitcastvbnm,wertyuioqwsdfgbhnjmzxcfvghjuiko';
+	// 要找 itcast, 因此正则表达式就可以使用 'itcast' 来表示
+	// 1, 创建正则表达式对象
+	var r1 = new RegExp( 'itcast' );
+	var r2 = /itcast/;
+
+	// 2, 开始检查匹配
+	var res = r2.test( str );
+
+	console.log( res );
+
+
+
+	// 使用传统字符串操作
+	var search = 'itcast'
+	for ( var i = 0; i < str.length - search.length; i++ ) {
+		// 判断 str[ i ] 开始 的字符串是 itcast
+		if ( search == str.substr( i, search.length ) ) {
+			console.log( i ); 
+			break;
+		}
+	}
+
+	// 如果我要找的是 foot 或 food 或 fox 或 ...
+	// 需求: 敏感词
+	// 张 三, 李 四, 王 五, a~*.b~*.c
+	// 匹配: '张三', 正则写法 /张三/
+	// 匹配: '张...三', 正则的写法 /张  三/ 
+
+</script>
+</html>
