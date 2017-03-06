@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div>123</div>
+	<div>456</div>
+	<p>p标签</p>
+	<p>p标签</p>
+</body>
+<script>
+	// 让 t 包含函数体( 原来 ), 同时还包含 对象 
+	var t = document.getElementsByTagName.bind( document ), 
+		arr = [];
+	
+	arr.push.apply( arr, t( 'p' ) );
+
+	arr.push.apply( arr, t( 'div' ) );
+
+
+	for ( var i = 0; i < arr.length; i++ ) {
+		arr[ i ].style.border = '1px solid red';
+	}
+
+	// bind
+	// 就是让函数绑定对象的一种用法
+	// 函数本身就是可以调用, 但是其如果想要作为方法调用, 就必须传入宿主对象, 并且使用 call 或 apply 形式
+	// 但是 bind 使得我的函数可以与某一个对象绑定起来, 那么在调用函数的时候, 就好像是该对象在调用方法
+
+	// 语法
+	// 	函数.bind( 对象 )   
+	// 返回一个函数 foo
+	// 那么调用 返回的函数 foo, 就好像 对象在调用 该方法一样
+
+	// t.call( document, 'p' );
+
+	// t( 'p' )
+
+	// ES 5 给出的函数调用方法
+
+</script>
+</html>

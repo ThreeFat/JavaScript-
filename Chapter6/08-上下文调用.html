@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+	function foo ( num1, num2 ) {
+		console.log( this );
+		return num1 + num2;
+	} 
+
+	// 函数调用模式
+	// var res1 = foo( 123, 567 );
+
+	// 方法调用
+	var o = { name: 'jim' };
+	// o.func = foo;
+	
+	// var res2 = o.func( 123, 567 );
+
+	// 改写成 apply 形式
+	var res1 = foo.apply( null, [ 123, 567 ] );
+	var res2 = foo.apply( o, [ 123, 567 ] );
+
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+	// 1, 读取代码, 然后预解析, 得到 Foo 函数与 getName 函数
+	
+	function Foo(){
+		getName = function(){ alert(1); };
+		return this;
+	}
+	function getName(){ 
+		alert(5); 
+	}
+
+
+	Foo.getName = function(){ alert(2); };
+	Foo.prototype.getName = function(){ alert(3); };
+
+	getName = function(){ alert(4); };   // 覆盖前面的 getName
+
+	
+
+	Foo.getName();        		// = 2    
+	getName();                	// = 4
+	Foo().getName();			// 首先是 函数调用模式, 因此返回 this 即 window 全局对象
+								// 同时给 getName 重新赋值, 在函数 Foo 中没有 getName 的声明
+								// 因此修改的是外面的 getName 
+
+								// 所以最终是 全局的 window 调用 getName 即 就是 getName 的函数调用模式
+
+								// = 1
+
+	getName();         			// = 1       
+	new Foo.getName();       	// = 2 
+	new Foo().getName();      	// = 3
+	
+	new new Foo().getName();    // = 3
+	// 如果不清楚, 猜测有两种可能
+
+	// new ( new Foo() ).getName()
+
+	// new ( new Foo().getName() ) // 不可能是这样的结合形式
+
+
+</script>
+</html>

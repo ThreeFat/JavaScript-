@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+	var o = (function () {
+		var num = 13;
+		return {
+				
+			// get 名字 () { 逻辑体 }
+			get num () {
+				console.log( '执行 getter 读写器了' );
+				return num;
+			},
+
+			// set 名字 ( v ) { 逻辑体 }
+			set num ( v ) {
+				console.log( '执行 setter 读写器了' );
+
+				if ( v < 0 || v > 150 ) {
+					console.log( '赋值超出范围, 不成功 ' );
+					return;
+				}	
+				num = v;
+			}
+		};
+	})();
+
+
+	var obj = { num: 123 };  // 要限制其赋值的范围
+	// obj.age   要求 age 的范围是 0 到 150
+
+
+	console.log( o.num );
+
+	o.num = 33;
+
+	console.log( o.num );
+
+</script>
+</html>

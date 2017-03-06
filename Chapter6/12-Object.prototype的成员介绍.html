@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+	function Person () {
+		this.name = 'jim';
+	}
+	Person.prototype.age = 19;
+
+	var p = new Person();
+
+	// console.log( p.hasOwnProperty( 'name' ) ); // p 是否含有 name 属性
+
+	// console.log( p.hasOwnProperty( 'age' ) ); // p 是否含有 age 属性
+
+	// propertyIsEnumerable 判断属性是否可以枚举
+
+	// 
+	console.log( p.isPrototypeOf( Person.prototype ) );
+	console.log( Person.prototype.isPrototypeOf( p ) );
+
+</script>
+</html>

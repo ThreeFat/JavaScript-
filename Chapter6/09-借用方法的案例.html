@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div>123</div>
+	<div>456</div>
+	<p>p标签</p>
+	<p>p标签</p>
+</body>
+<script>
+	// 需求, 获得 div 与 p 标签, 并添加边框 border: 1px solid red
+	// var p_list = document.getElementsByTagName( 'p' );
+	// var div_list = document.getElementsByTagName( 'div' );
+
+
+	// var  i= 0;
+	// for ( ; i < p_list.length; i++ ) {
+	// 	p_list[ i ].style.border = '1px solid red';
+	// }
+	// for ( i = 0; i < div_list.length; i++ ) {
+	// 	div_list[ i ].style.border = '1px solid red';
+	// }
+
+	// 1. 方法名太长, 容易出错. 
+	// 2. 希望通过一个循环完成样式设置
+	// var t = document.getElementsByTagName;
+	// var p_list = t.apply( document,  [ 'p' ] );
+	// var div_list = t.apply( document, [ 'div' ] );
+	
+	// var arr = [];
+
+	// [].push.apply( arr, div_list );
+	// [].push.apply( arr, p_list );
+
+	// 数组合并数组的方法
+	// concat
+	// push
+	// ...
+
+	// 演示数组的合并使用方法
+	// var arr1 = [ 1, 2, 3 ];
+	// var arr2 = [ 5, 6 ];
+	// arr1.push( arr2[ 0 ], arr2[ 1 ] );
+
+	// Array.prototype.push.apply( arr1, arr2 );
+
+
+	var t = document.getElementsByTagName, 
+		arr = [];
+	
+	arr.push.apply( arr, t.apply( document,  [ 'p' ] ) );
+
+	arr.push.apply( arr, t.apply( document,  [ 'div' ] ) );
+
+	// arr.forEach(function ( v ) {
+	// 	v.style.border = '1px solid red';
+	// });
+
+	for ( var i = 0; i < arr.length; i++ ) {
+		arr[ i ].style.border = '1px solid red';
+	}
+
+</script>
+</html>

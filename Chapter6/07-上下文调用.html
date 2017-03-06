@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+	function foo () {
+		console.log( this );
+	}
+
+	var o = { name: 'jim' };
+
+	// foo();
+
+	// o.func = foo;
+	// o.func();
+
+	// 如果需要让函数以函数的形式调用, 可以使用
+	// foo.apply( null ) 或 foo.apply()
+	// foo.apply();
+	// foo.apply( null );
+
+
+	// 如果希望他是方法调用模式, 注意需要提供一个宿主对象
+	foo.apply( o )
+	// 该方式调用, 不会污染宿主对象. 不必要宿主对象, 必须包含该方法
+
+</script>
+</html>

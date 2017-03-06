@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+	function Person ( name, age, gender ) {
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+	}
+
+	function Student ( name, age, gender, course ) {
+
+		Person.call( this, name, age, gender );
+		//假装里面有个Person方法,调用它. this指向为Student
+		this.course = course;
+	}
+
+	var p = new Student ( 'jim', 19, 'male', '前端' );
+
+	console.log(p);
+</script>
+</html>

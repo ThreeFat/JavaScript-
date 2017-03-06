@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+	function foo () {
+		console.log( this );
+	}
+
+	// 方法调用一定要有 宿主对象
+	// 方法一定是 某个对象的 方法. 对象可以是 任何 对象
+	var o = { name: 'jim' };
+	o.foo = foo;
+
+	// foo();			// 函数调用
+	// o.foo();		// 方法调用
+
+
+	function func () {
+		console.log( '函数也是对象' );
+	}
+	func.foo = foo;
+
+	// foo();			// 函数调用
+	// func.foo();		// 方法调用, 常常称为静态方法 <- 构造函数中的方法;
+
+
+	var arr = [ 1, 2, 3 ];
+	// arr.foo = foo;
+	// arr.foo();
+
+
+</script>
+</html>

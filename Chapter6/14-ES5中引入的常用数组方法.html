@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+	// 1 forEach
+	// var arr = [ 'hello', ' js', {  }, function () {} ];
+	// // 遍历 数组
+	// arr.forEach( function ( v, i ) {
+	// 	console.log( i + '=====' + v );
+	// });
+
+
+	// 2 map 映射
+	// 语法: 		数组.map( fn )
+	// 返回一个数组, 数组的每一个元素就是 map 函数中的 fn 的返回值
+	// var arr = [ 1, 2, 3, 4 ];
+
+	// 数学中: x -> x * x
+	// var a = arr.map(function ( v, i ) {
+	// 	return v * v;
+	// });
+
+
+	// 3 filter 就是筛选
+	// 语法:     数组.filter( function ( v, i ) { return true/false })
+	// var arr = [ 1, 2, 3, 4, 5, 6 ];
+	// var a = arr.filter( function ( v ) { return v % 2 === 1; });
+
+
+	// 4 some 判断数组中至少有一个数据复合要求 就返回 true, 否则返回 false
+	// var arr = [ '123', {}, function () {}, '123' ];
+	// 判断数组中至少有一个数数字
+	// var isTrue = arr.some( function ( v ) { return typeof v === 'number'; } );
+
+	// 5 every 必须满足所有元素都复合要求才会返回 true
+	// var arr = [ 1, 2, 3, 4, 5, '6' ];
+	// var isTrue = arr.every( function ( v ) { return typeof v === 'number'; } );
+
+
+	// 6 indexOf 在数组中查找元素, 如果含有该元素, 返回元素的需要( 索引 ), 否则返回 -1
+	// var arr = [ 1, 2, 3, 4, 5 ];
+	// var res = arr.indexOf( 4 );
+	// console.log( res );
+
+	// var arr = [ 1, 2, 3, 4, 5, 4, 5, 6 ];
+	// var res = arr.indexOf( 4, 4 );
+	// console.log( res );
+
+	// 7 lastIndexOf 从右往左找
+	// var arr = [ 1, 2, 3, 4, 5, 4, 5, 6 ];
+	// var res = arr.lastIndexOf( 4 );
+	// console.log( res );
+
+</script>
+</html>

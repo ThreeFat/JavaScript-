@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+</body>
+<script>
+/*	function foo () {
+		console.log( '我是一个函数' );
+	}
+
+	foo();*/
+    var length = 10;
+    function fn() {
+        console.log(this.length);
+    }
+    var obj = {
+        length: 5,
+        method: function (fn) {
+            fn();
+            arguments[0]();   
+        }
+    };
+    obj.method(fn,1);
+
+
+    //闭包的核心是让函数具有私有属性	
+</script>
+</html>
